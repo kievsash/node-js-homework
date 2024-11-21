@@ -1,0 +1,15 @@
+## How to start
+
+### Start postgres
+cd be-nest-app
+docker-compose up --build
+
+
+### Start BE
+cd be-nest-app
+npm start
+
+### Start FE
+cd fe-angular-app
+ng serve
+
