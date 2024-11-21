@@ -2,14 +2,17 @@
 
 ### Start postgres
 cd be-nest-app
+npm i --force
 docker-compose up --build
 
 
 ### Start BE
 cd be-nest-app
+npm i --force
 npm start
 
 ### Start FE
 cd fe-angular-app
+npm i --force
 ng serve
 
