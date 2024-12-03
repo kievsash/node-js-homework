@@ -19,19 +19,19 @@ import { BodyParametersGuard } from '../guards/body-parameters-guard.service';
 @Controller('posts')
 @ApiTags('posts')
 export class PostsController {
-  constructor(private readonly tweetService: PostsService) {}
+  constructor(private readonly postService: PostsService) {}
 
   @Get()
   @ApiOperation({ summary: 'Get all post from authenticated user' })
   async getAllPosts(@Request() req: any) {
-    return this.tweetService.getAllPosts(req.user.username);
+    return this.postService.getAllPosts(req.user.username);
   }
 
   @Post()
   @UseGuards(new BodyParametersGuard(['username', 'content']))
   @ApiOperation({ summary: 'Create post for user' })
   async createPost(@Body() body: { username: string; content: string }) {
-    return this.tweetService.createPost(body.username, body.content);
+    return this.postService.createPost(body.username, body.content);
   }
 
   @Put(':id')
@@ -41,7 +41,7 @@ export class PostsController {
     @Param('id') id: number,
     @Body() body: { content: string },
   ) {
-    return this.tweetService.updatePost(id, body.content);
+    return this.postService.updatePost(id, body.content);
   }
 
   @Delete(':id')
@@ -49,17 +49,17 @@ export class PostsController {
   async deletePost(@Param('id') id: number, @Request() req: any) {
     const user = req.user;
 
-    const tweet = await this.tweetService.findPostById(id);
-    if (!tweet) {
+    const post = await this.postService.findPostById(id);
+    if (!post) {
       throw new UnauthorizedException('Tweet not found');
     }
 
-    if (tweet.username !== user.username) {
+    if (post.username !== user.username) {
       throw new UnauthorizedException(
         'You are not authorized to delete this tweet',
       );
     }
 
-    return this.tweetService.deletePost(id);
+    return this.postService.deletePost(id);
   }
 }

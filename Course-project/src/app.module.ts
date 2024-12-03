@@ -4,8 +4,15 @@ import { UsersModule } from './users/users.module';
 import { DatabaseModule } from './database/database.module';
 import { PostsModule } from './posts/posts.module';
 import { RedisModule } from './redis/redisClient.module';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
-  imports: [DatabaseModule, AuthModule, UsersModule, PostsModule, RedisModule],
+    imports: [
+        DatabaseModule,
+        AuthModule,
+        UsersModule,
+        PostsModule,
+        RedisModule],
 })
-export class AppModule {}
+export class AppModule {
+}

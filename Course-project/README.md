@@ -15,7 +15,17 @@ Do not forget to comment out "app"in docker-compose.yml file and after that star
 docker-compose up --build
 ```
 
-### To run tests
+### To run unit tests 
 ```
 npm run test
 ```
+
+### To run integration tests 
+```
+npm run test:integration
+```
+
+
+### Swagger API documentation
+[http://localhost:3000/api](http://localhost:3000/api)
+

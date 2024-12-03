@@ -14,7 +14,6 @@ export class PostsService {
     const cacheKey = `user:${username}:posts`;
     const cachedUserPosts = await this.redis.get(cacheKey);
     if (cachedUserPosts) {
-      console.log('posts taken from cache');
       return JSON.parse(cachedUserPosts);
     }
 

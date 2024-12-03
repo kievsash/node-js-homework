@@ -41,7 +41,6 @@ export class JwtAuthGuard {
         secret: process.env.JWT_SECRET,
       });
       const storedToken = await this.tokensService.findAccessToken(token);
-
       if (!storedToken) {
         throw new UnauthorizedException('Access token not found in database');
       }

@@ -8,7 +8,7 @@ CREATE TABLE IF NOT EXISTS posts (
     id SERIAL PRIMARY KEY,
     content TEXT NOT NULL,
     username VARCHAR(255) NOT NULL,
-    FOREIGN KEY (username) REFERENCES users (username)
+    FOREIGN KEY (username) REFERENCES users (username) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS tokens (
