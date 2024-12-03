@@ -1,6 +1,7 @@
-import { Controller, Get, Param, Post, Body } from '@nestjs/common';
+import { Controller, Get, Param, Post, Body, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { BodyParametersGuard } from '../guards/body-parameters-guard.service';
 
 @Controller('users')
 @ApiTags('users')
@@ -14,6 +15,7 @@ export class UsersController {
   }
 
   @Post()
+  @UseGuards(new BodyParametersGuard(['username', 'password']))
   @ApiOperation({ summary: 'Create new user' })
   async create(@Body() body: { username: string; password: string }) {
     await this.usersService.createUser(body.username, body.password);

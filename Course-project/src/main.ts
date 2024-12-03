@@ -18,6 +18,9 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
 
-  await app.listen(4000);
+  const port: number = parseInt(process.env.PORT, 10) || 3000;
+
+  await app.listen(port);
+  console.log('NEST is listening on port ' + port);
 }
 bootstrap();
