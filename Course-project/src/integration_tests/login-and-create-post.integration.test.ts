@@ -16,6 +16,7 @@ describe('UsersController (e2e)', () => {
     });
 
     afterAll(async () => {
+        await axios.delete('http://localhost:3000/users', { headers: { 'Authorization': `Bearer ${access_token}` } });
     });
 
     it('should create a new user', async () => {
