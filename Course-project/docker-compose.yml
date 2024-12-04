@@ -2,8 +2,8 @@ version: '3.8'
 services:
   app:
     build: .
-    command: node dist/main.js
-#    command: npm start
+#    command: node dist/main.js
+    command: npm start
     volumes:
       - .:/usr/src/app
       - /usr/src/app/node_modules
